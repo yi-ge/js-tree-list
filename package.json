@@ -1,0 +1,28 @@
+{
+  "name": "js-tree-list",
+  "version": "1.0.0",
+  "description": "Convert list to tree, managing a tree and its nodes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yi-ge/js-tree-list.git"
+  },
+  "keywords": [
+    "tree",
+    "list",
+    "to",
+    "tree",
+    "list",
+    "js",
+    "tree"
+  ],
+  "author": "yi-ge <a@wyr.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yi-ge/js-tree-list/issues"
+  },
+  "homepage": "https://github.com/yi-ge/js-tree-list#readme"
+}
