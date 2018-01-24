@@ -1,10 +1,15 @@
 {
   "name": "js-tree-list",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Convert list to tree, managing a tree and its nodes.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "jasmine"
+    "dev": "",
+    "start": "npm run dev",
+    "build": "babel src -d lib",
+    "unit": "jest --config test/unit/jest.conf.js --coverage",
+    "e2e": "node test/e2e/runner.js",
+    "test": "npm run unit && npm run e2e"
   },
   "repository": {
     "type": "git",
@@ -12,17 +17,35 @@
   },
   "keywords": [
     "tree",
-    "list",
-    "to",
-    "tree",
-    "list",
-    "js",
-    "tree"
+    "list to tree",
+    "js list tree"
   ],
   "author": "yi-ge <a@wyr.me>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/yi-ge/js-tree-list/issues"
   },
-  "homepage": "https://github.com/yi-ge/js-tree-list#readme"
+  "homepage": "https://github.com/yi-ge/js-tree-list#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  },
+  "presets": [
+    ["env", {
+      "modules": false,
+      "targets": {
+        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+      }
+    }],
+    "stage-2"
+  ],
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }
