@@ -4,8 +4,6 @@
   "description": "Convert list to tree, managing a tree and its nodes.",
   "main": "lib/index.js",
   "scripts": {
-    "dev": "",
-    "start": "npm run dev",
     "build": "babel src -d lib",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
