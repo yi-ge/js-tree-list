@@ -8,6 +8,7 @@ test/e2e/reports
 selenium-debug.log
 .idea/
 yarn-error.log
+coverage/
 
 .AppleDouble
 .LSOverride
