@@ -1,0 +1,23 @@
+.DS_Store
+node_modules/
+dist/
+npm-debug.log
+yarn-debug.log
+test/unit/coverage
+test/e2e/reports
+selenium-debug.log
+.idea/
+yarn-error.log
+coverage/
+.cache
+
+.AppleDouble
+.LSOverride
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes

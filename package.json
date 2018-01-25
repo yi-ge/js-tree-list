@@ -1,28 +1,53 @@
 {
   "name": "js-tree-list",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert list to tree, managing a tree and its nodes.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "jasmine"
+    "build:babel": "rm -rf dist && babel src -d dist",
+    "build": "rm -rf lib && babel src -d lib",
+    "unit": "jest --config test/unit/jest.conf.js --coverage",
+    "test": "npm run unit",
+    "test:after_build": "node test/after_build/index.js",
+    "coveralls":
+      "cat ./test/unit/coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "codecov": "codecov -t 21b722b7-28ff-49ce-8a38-37c451027140"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yi-ge/js-tree-list.git"
   },
-  "keywords": [
-    "tree",
-    "list",
-    "to",
-    "tree",
-    "list",
-    "js",
-    "tree"
-  ],
+  "keywords": ["tree", "list to tree", "js list tree"],
   "author": "yi-ge <a@wyr.me>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/yi-ge/js-tree-list/issues"
   },
-  "homepage": "https://github.com/yi-ge/js-tree-list#readme"
+  "homepage": "https://github.com/yi-ge/js-tree-list#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-jest": "^22.1.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "codecov": "^3.0.0",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.16.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^22.1.4"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": ["> 1%", "last 2 versions", "safari >= 7", "not ie <= 8"],
+  "jest": {
+    "coverageDirectory": "./test/unit/coverage/",
+    "collectCoverage": true
+  }
 }
