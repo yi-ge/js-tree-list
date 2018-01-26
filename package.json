@@ -1,6 +1,6 @@
 {
   "name": "js-tree-list",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Convert list to tree, managing a tree and its nodes.",
   "main": "bin/js-tree-list.min.js",
   "scripts": {
@@ -12,7 +12,8 @@
     "test:after_build": "node test/after_build/index.js",
     "coveralls":
       "cat ./test/unit/coverage/lcov.info | ./node_modules/.bin/coveralls",
-    "codecov": "codecov -t 21b722b7-28ff-49ce-8a38-37c451027140"
+    "codecov": "codecov -t 21b722b7-28ff-49ce-8a38-37c451027140",
+    "releases": "node releases.js"
   },
   "repository": {
     "type": "git",
