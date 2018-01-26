@@ -9,8 +9,8 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/yi-ge/js-tree-list.svg?style=flat-square)](https://github.com/yi-ge/js-tree-list)
 [![bitHound](https://img.shields.io/bithound/dependencies/github/yi-ge/js-tree-list.svg?style=flat-square)](https://www.bithound.io/github/yi-ge/js-tree-list)
 
-[![Github file size](https://img.shields.io/github/size/yi-ge/js-tree-list/bin/js-tree-list.min.js.svg?style=flat-square)](https://github.com/yi-ge/js-tree-list/blob/master/bin/js-tree-list.min.js)
 [![GitHub release](https://img.shields.io/github/release/yi-ge/js-tree-list.svg?style=flat-square)](https://github.com/yi-ge/js-tree-list/releases)
+[![Github file size](https://img.shields.io/github/size/yi-ge/js-tree-list/bin/js-tree-list.min.js.svg?style=flat-square)](https://github.com/yi-ge/js-tree-list/blob/master/bin/js-tree-list.min.js)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fyi-ge%2Fjs-tree-list.svg?type=small)](https://app.fossa.io/projects/git%2Bgithub.com%2Fyi-ge%2Fjs-tree-list?ref=badge_small)
 
 Convert list to tree, managing a tree and its nodes.
