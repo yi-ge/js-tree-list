@@ -4,7 +4,7 @@
 [![build status](https://img.shields.io/travis/yi-ge/js-tree-list.svg?style=flat-square)](https://travis-ci.org/yi-ge/js-tree-list)
 [![Codecov](https://img.shields.io/codecov/c/github/yi-ge/js-tree-list.svg?style=flat-square)](https://codecov.io/gh/yi-ge/js-tree-list)
 [![code coverage](https://img.shields.io/coveralls/yi-ge/js-tree-list.svg?style=flat-square)](https://coveralls.io/github/yi-ge/js-tree-list)
-[![npm downloads](https://img.shields.io/npm/dm/js-tree-list.svg?style=flat-square)](http://npm-stat.com/charts.html?package=js-tree-list)
+[![npm](https://img.shields.io/npm/dt/js-tree-list.svg?style=flat-square)](http://npm-stat.com/charts.html?package=js-tree-list)
 [![license](https://img.shields.io/github/license/yi-ge/js-tree-list.svg?style=flat-square)](https://github.com/yi-ge/js-tree-list/blob/master/LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/yi-ge/js-tree-list.svg?style=flat-square)](https://github.com/yi-ge/js-tree-list)
 [![bitHound](https://img.shields.io/bithound/dependencies/github/yi-ge/js-tree-list.svg?style=flat-square)](https://www.bithound.io/github/yi-ge/js-tree-list)

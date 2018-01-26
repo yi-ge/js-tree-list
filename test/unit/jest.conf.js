@@ -9,7 +9,11 @@ module.exports = {
   transform: {
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest'
   },
-  testPathIgnorePatterns: ['<rootDir>/test/e2e', '<rootDir>/test/after_build'],
+  testPathIgnorePatterns: [
+    '<rootDir>/test/e2e',
+    '<rootDir>/test/after_build',
+    '<rootDir>/rollup.config.js'
+  ],
   setupFiles: ['<rootDir>/test/unit/setup'],
   mapCoverage: true,
   coverageDirectory: '<rootDir>/test/unit/coverage',
