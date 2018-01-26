@@ -1,0 +1,34 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": ["> 1%", "last 2 versions", "safari >= 7", "not ie <= 8"],
+          "node": "6.0.0"
+        }
+      }
+    ]
+  ],
+  "plugins": ["transform-runtime"],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "browsers": [
+                "> 1%",
+                "last 2 versions",
+                "safari >= 7",
+                "not ie <= 8"
+              ],
+              "node": "6.0.0"
+            }
+          }
+        ]
+      ]
+    }
+  }
+}

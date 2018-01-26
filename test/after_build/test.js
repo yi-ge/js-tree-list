@@ -1,8 +1,5 @@
-import JsTreeList from '../../src/index'
-import { Node, Tree } from '../../src/index'
-console.log(Node)
-console.log(Tree)
-// const JsTreeList = require('../../lib/index')
+import JsTreeList from '../../bin/js-tree-list.min.js'
+// const JsTreeList = require('../../bin/js-tree-list.min.js')
 console.log(JsTreeList)
 var list = [
   {
@@ -47,7 +44,7 @@ var list = [
   }
 ]
 
-var ltt = new JsTreeList(list, {
+var ltt = new JsTreeList.ListToTree(list, {
   key_id: 'id',
   key_parent: 'parent'
 })
