@@ -1,9 +1,6 @@
 language: node_js
 node_js:
   - 9.4.0
-install:
-  - yarn add global rollup
-  - yarn
 script:
   - yarn run test
   - yarn run build
