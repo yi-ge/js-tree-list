@@ -12,7 +12,8 @@ module.exports = {
   testPathIgnorePatterns: [
     '<rootDir>/test/e2e',
     '<rootDir>/test/after_build',
-    '<rootDir>/rollup.config.js'
+    '<rootDir>/rollup.config.js',
+    '<rootDir>/releases.js'
   ],
   setupFiles: ['<rootDir>/test/unit/setup'],
   mapCoverage: true,

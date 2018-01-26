@@ -1,5 +1,5 @@
 import JsTreeList from '../../../src/index'
 
 test('Get a Class', () => {
-  expect(typeof JsTreeList).toMatch('function')
+  expect(typeof JsTreeList).toMatch('object')
 })

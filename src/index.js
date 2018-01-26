@@ -1,6 +1,6 @@
 import ListToTree from './list-to-tree'
-import tree from './tree'
-import node from './node'
+import Tree from './tree'
+import Node from './node'
 
 export default {
   ListToTree,

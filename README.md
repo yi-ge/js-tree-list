@@ -29,7 +29,7 @@ $ npm install js-tree-list
 ## Usage
 
 ```js
-import JsTreeList from "../../src/index"
+import JsTreeList from "js-tree-list"
 var list = [
   {
     id: 1,
@@ -73,11 +73,11 @@ var list = [
   }
 ]
 
-var jsTreeList = new JsTreeList(list, {
+var listToTree = new JsTreeList.ListToTree(list, {
   key_id: "id",
   key_parent: "parent"
 })
-var tree = jsTreeList.GetTree()
+var tree = listToTree.GetTree()
 
 console.log(tree)
 ```
@@ -164,9 +164,9 @@ console.log(tree)
 
 ```js
 // create tree
-import { Tree } from "JsTreeList"
+import JsTreeList from "js-tree-list"
 const object = { id: 1, title: "Root" }
-const tree = new Tree(object)
+const tree = new JsTreeList.Tree(object)
 
 // add nodes
 const regularObject = { id: 2, title: "Node 2" }
@@ -230,7 +230,7 @@ This is the class of tree management
   * example
   ```js
   const object = { id: 1, title: "Root" }
-  const tree = new Tree(object)
+  const tree = new JsTreeList.Tree(object)
   ```
 * **.add(criteria, object)** Adds a node to the tree if the criterion is true
   * params
@@ -240,7 +240,7 @@ This is the class of tree management
   * examples
   ```js
   const object = { id: 1, title: "Root" }
-  const tree = new Tree()
+  const tree = new JsTreeList.Tree()
   const resultTree = tree.add("root", object)
   ```
   ```js
@@ -358,12 +358,12 @@ This is the node management class
   * examples
 
   ```js
-  import { Node } from "JsTreeList"
+  import JsTreeList from "js-tree-list"
   const rootContent = {
     id: 1,
     name: "Root"
   }
-  let node = new Node(rootContent)
+  let node = new JsTreeList.Node(rootContent)
   ```
 
 * **.add(child)** Adding a child to the node
@@ -376,7 +376,7 @@ This is the node management class
     id: 1,
     name: "Root"
   }
-  let node = new Node(rootContent)
+  let node = new JsTreeList.Node(rootContent)
   const childNode = node.add({ id: 2, name: "Two node" })
   ```
 * **.remove(criteria)** Removing a child node according to the criterion

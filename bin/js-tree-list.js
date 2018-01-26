@@ -63,7 +63,7 @@ var defineProperty = function (obj, key, value) {
   return obj;
 };
 
-var Node$1 = function () {
+var Node = function () {
   function Node(content) {
     classCallCheck(this, Node);
 
@@ -230,14 +230,14 @@ var serializeTree = function serializeTree(tree) {
   return target;
 };
 
-var Tree$1 = function () {
+var Tree = function () {
   function Tree() {
     var object = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
     classCallCheck(this, Tree);
 
     this.rootNode = null;
     if (object) {
-      this.rootNode = new Node$1(object);
+      this.rootNode = new Node(object);
     }
   }
 
@@ -262,7 +262,7 @@ var Tree$1 = function () {
     value: function add(callback, object) {
       var type = typeof callback === 'undefined' ? 'undefined' : _typeof(callback);
       if (type === 'string' && callback === 'root') {
-        this.rootNode = new Node$1(object);
+        this.rootNode = new Node(object);
         return this;
       } else if (type === 'function') {
         var target = searchNode(this, null, callback);
@@ -373,7 +373,7 @@ var ListToTree = function () {
 
 
     sortBy(_list, key_parent, key_id);
-    var tree = new Tree$1(defineProperty({}, key_id, 0));
+    var tree = new Tree(defineProperty({}, key_id, 0));
     _list.forEach(function (item, index) {
       tree.add(function (parentNode) {
         return parentNode.get(key_id) === item[key_parent];

@@ -1,1 +1,1 @@
-console.log('测试setup')
+// setup.js

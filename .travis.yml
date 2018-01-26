@@ -1,11 +1,18 @@
 language: node_js
 node_js:
-  - 9.4.0
+- 9.4.0
 script:
-  - yarn run test
-  - yarn run build
+- yarn run test
+- yarn run build
 after_success:
-  - npm run test:after_build
-  - yarn run coveralls
-  - yarn run codecov
-
+- npm run test:after_build
+- yarn run coveralls
+- yarn run codecov
+deploy:
+  provider: npm
+  email: a@wyr.me
+  api_key:
+    secure: j4O2HJvOXsJ5rVeu5AW8Q2GeNoyS5VN3Zb6geXfArQSzqnZPA7b8lc84uDcND9QelAEKVuub8ftpeNan9btMeTRvU5VOVVC/wS7sMN5NGnStsniDoGNo7njXgeaJwH+w7h2wvevr7ycbUuzf/1ZNAN06yMCKv8qNmLoLqd4ODBoLTRBugWj9JVYRN9/MGRmwJ71k2SUOLHKTi1JdggoUpPnojpbPJkYTZwpBIqp5bdjc8cDsRTu6fs5zMCN778USjBU5t05BV3ifI7q/RLFmaE/5EaFNvE3kvKDXjmTPWTOG67mHsiDxGCCLV20lMoP2Fq7EUSUs7nEpcLm1cxTlPNFluV6wKY4sDMLR8Aznmirj4Rg+dfjsLK9fW0lsv3+lDaTxJz1Fo/Fbqx+DfYFvWScIE13mp260SSWqah1Cccovm+8IgiwIfRzpw9da9ARtY2LBDxS6f6X2hNs+5blqhKDvOiBnCCGh4S7ZFzPlchwUMgLhpgjcV5rszgaO1aSWjEeHVVcLq+yGyMCsm+6U3ZVhnVLtFzryvx+Amg1Cxj9DyflB0fmGdOa9AxVEECE3yV9a7RKpJmGHoyXpAYF3toLwkg3c0ukgsPsGfH7bm9K+dPt8hE8VTigWlljSGiuyq64dTym3Scm3xUpkP37wgok+YAVj+nGb+Ayl/D+bRg4=
+  on:
+    tags: true
+    repo: yi-ge/js-tree-list
