@@ -17,7 +17,7 @@ exec(
     package.version
   } -m "releases v${
     package.version
-  }." && git push origin --tags && git fetch origin`,
+  }." && git push origin --tags && git fetch origin && npm publish`,
   (error, stdout, stderr) => {
     if (error) {
       console.error(`exec error: ${error}`)
