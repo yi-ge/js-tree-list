@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- 9.4.0
+- 9.5.0
 script:
 - yarn run test
 - yarn run build
@@ -9,13 +9,13 @@ after_success:
 - yarn run coveralls
 - yarn run codecov
 deploy:
-  provider: npm
-  email: a@wyr.me
-  api_key:
-    secure: RSZ3hkk2TzVp2HyRX5PVzmmI/Sy4kDUX8YdaTwjSXlQi8nAI6iGh3hPENz78hI94nwg6QOwqrxdeGfgTINcVXXu2rySWcrAiUX4nCjpoWlMi9hNoKbzywdFs684Xho9bpd7V3Tu/YZxqNCuBpLVYGM4uIPNUb8vdVi4XkfNWQCwdtKFLzJOrwrlRAY0WB8oBgRhGlypgBXUbRq0QTUYhCk2kwaissHK+BcqFpBmoICeDiyFbiovUpLv0kazi46ZJZnG4o5goPW1x79bE6Ezr+Qymy4VRYQtdpQLFtBEqBrS1VP9Q10YdWGpi79it5/0Y1DsClfo/suqpSqAU3QgmatT5GPFXQwNXVhyuLgoQu3STiwlYfSWUhOGKCe2SSX2BDdzy2ZpuKH4BKdJJpeaQr3tAWv7JlKBOtkElZimKFfSI8BdpCRfng8mp9hwmIRVjMIbhCSj5ToVhjwGfPuI9cO/1T+/4zxaLa7HqXiQNsjkRBsFv2IUpzTTDNdWcsZxBX+0xGZTtcbaiZGjkbRb2j9wwgc03D+8Uc1S22tfrooRvR+CA7jr4q+wxEtKPsDmGwKa1YX4S68nxO6Kw29VRGq4yJ80GY2Rb2DB3ogVFDKAn5dzffsJ2eJZGQeFT7ii+4t4z0SALSS7PAxF4d0W/yiAKOaWYdARlF8z/oELOtdo=
-  on:
-    tags: true
-    repo: yi-ge/js-tree-list
+  # provider: npm
+  # email: a@wyr.me
+  # api_key:
+  #   secure: RSZ3hkk2TzVp2HyRX5PVzmmI/Sy4kDUX8YdaTwjSXlQi8nAI6iGh3hPENz78hI94nwg6QOwqrxdeGfgTINcVXXu2rySWcrAiUX4nCjpoWlMi9hNoKbzywdFs684Xho9bpd7V3Tu/YZxqNCuBpLVYGM4uIPNUb8vdVi4XkfNWQCwdtKFLzJOrwrlRAY0WB8oBgRhGlypgBXUbRq0QTUYhCk2kwaissHK+BcqFpBmoICeDiyFbiovUpLv0kazi46ZJZnG4o5goPW1x79bE6Ezr+Qymy4VRYQtdpQLFtBEqBrS1VP9Q10YdWGpi79it5/0Y1DsClfo/suqpSqAU3QgmatT5GPFXQwNXVhyuLgoQu3STiwlYfSWUhOGKCe2SSX2BDdzy2ZpuKH4BKdJJpeaQr3tAWv7JlKBOtkElZimKFfSI8BdpCRfng8mp9hwmIRVjMIbhCSj5ToVhjwGfPuI9cO/1T+/4zxaLa7HqXiQNsjkRBsFv2IUpzTTDNdWcsZxBX+0xGZTtcbaiZGjkbRb2j9wwgc03D+8Uc1S22tfrooRvR+CA7jr4q+wxEtKPsDmGwKa1YX4S68nxO6Kw29VRGq4yJ80GY2Rb2DB3ogVFDKAn5dzffsJ2eJZGQeFT7ii+4t4z0SALSS7PAxF4d0W/yiAKOaWYdARlF8z/oELOtdo=
+  # on:
+  #   tags: true
+  #   repo: yi-ge/js-tree-list
   provider: releases
   api_key:
     secure: W8wkSYvZjpXi8QV/apgatLuDgeceMrlq3A79FgpOAhG27bgV7N43zkbjV9RSSjZiVWJ0oZnSgHQ0Qic1P6rN7iJPmm2AY70rA6pYoE2rdb3H2NAa1n4+STDmLIgeDLZW6dAVdbOQU48W8fKBjaVgjGbRZAhu++Llalsd30QDBW64pkiCYaatxvikhzNbr4P1nhDJyJl/gUnBbKspXRpGMb8BfY9exT2LPUXM+fQSExcEjLVhkRsTVkBh3Jk61Rj55gw9wCuQxHWjTzuss870fBNkHUYxfLaBs8NGkRpMJ1ER4NrVav872KStAjnyYZobqNqHE3P2SuwCnAhfJC0xXgQnzPIjhAnQqe6X4iSbR9RHSo7VBPdAkBH3zh79amJUi0o7gh2a/cWsGE/+8HGM/D6BsNdUJ5KjAY1cyk2iJkHTP8pJpexoQELFnw9iX+7ZwxL4x0dSa/B6IzM/90dQQIAxBKAZ8L0G469hMMH4OOQdfmWwznVICotOAkkBuYNZazbslJd4fA2BpGPmb+YIGjNkM7hdp39NUJr8Fu1fCOvxzxTw1pzZqRmX3O39b+fRYw06PIeW2j2qzJPogyGR9I3Nl2TrKqj4Irt91FtUF3vLj2LQO5cg8rftgNRgR4JcZfilBtoudBKrAoqyWju62rxf4xllPbvbljAvjsKBI+M=

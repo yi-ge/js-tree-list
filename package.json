@@ -5,13 +5,11 @@
   "main": "bin/js-tree-list.min.js",
   "scripts": {
     "build:babel": "babel src -d dist",
-    "build":
-      "rollup --config rollup.config.js && uglifyjs --compress --output bin/js-tree-list.min.js --mangle -- bin/js-tree-list.js",
+    "build": "rollup --config rollup.config.js && uglifyjs --compress --output bin/js-tree-list.min.js --mangle -- bin/js-tree-list.js",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
     "test:after_build": "node test/after_build/index.js",
-    "coveralls":
-      "cat ./test/unit/coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "coveralls": "cat ./test/unit/coverage/lcov.info | ./node_modules/.bin/coveralls",
     "codecov": "codecov -t 21b722b7-28ff-49ce-8a38-37c451027140",
     "releases": "node releases.js"
   },
@@ -19,7 +17,11 @@
     "type": "git",
     "url": "git+https://github.com/yi-ge/js-tree-list.git"
   },
-  "keywords": ["tree", "list to tree", "js list tree"],
+  "keywords": [
+    "tree",
+    "list to tree",
+    "js list tree"
+  ],
   "author": "yi-ge <a@wyr.me>",
   "license": "MIT",
   "bugs": {
@@ -49,13 +51,19 @@
     "rollup": "^0.55.0",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-node-resolve": "^3.0.2",
-    "uglify-js": "^3.3.8"
+    "uglify-js": "^3.3.8",
+    "uuid": "^3.2.1"
   },
   "engines": {
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
   },
-  "browserslist": ["> 1%", "last 2 versions", "safari >= 7", "not ie <= 8"],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "safari >= 7",
+    "not ie <= 8"
+  ],
   "jest": {
     "coverageDirectory": "./test/unit/coverage/",
     "collectCoverage": true
