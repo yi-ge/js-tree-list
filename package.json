@@ -1,6 +1,6 @@
 {
   "name": "js-tree-list",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Convert list to tree, managing a tree and its nodes.",
   "main": "bin/js-tree-list.min.js",
   "scripts": {
@@ -28,9 +28,6 @@
     "url": "https://github.com/yi-ge/js-tree-list/issues"
   },
   "homepage": "https://github.com/yi-ge/js-tree-list#readme",
-  "dependencies": {
-    "babel-runtime": "^6.26.0"
-  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.1",

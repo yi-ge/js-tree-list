@@ -4,8 +4,15 @@ const { exec } = require('child_process')
 const package = require('./package.json')
 
 let arrVersion = (package.version).split('.')
-arrVersion[2] = parseInt(arrVersion[2]) + 1
-package.version = arrVersion.join('.')
+
+if (process.argv[2]) {
+  package.version = process.argv[2]
+} else {
+  arrVersion[2] = parseInt(arrVersion[2]) + 1
+  package.version = arrVersion.join('.')
+}
+
+console.log('The now version is: ' + package.version)
 
 const upPackage = JSON.stringify(package, null, 2)
 fs.writeFileSync(path.resolve(__dirname + '/package.json'), upPackage)
