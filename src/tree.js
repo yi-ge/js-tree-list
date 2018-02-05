@@ -84,6 +84,8 @@ export default class Tree {
 
     if (result && result.length > 0) {
       return result[0]
+    } else {
+      return []
     }
   }
 }

@@ -8,6 +8,7 @@
     "build": "rollup --config rollup.config.js && uglifyjs --compress --output bin/js-tree-list.min.js --mangle -- bin/js-tree-list.js",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
+    "test:watchAll": "jest --config test/unit/jest.conf.js --watchAll --coverage",
     "test:after_build": "node test/after_build/index.js",
     "coveralls": "cat ./test/unit/coverage/lcov.info | ./node_modules/.bin/coveralls",
     "codecov": "codecov -t 21b722b7-28ff-49ce-8a38-37c451027140",

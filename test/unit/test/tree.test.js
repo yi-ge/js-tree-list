@@ -283,6 +283,14 @@ describe('Tree', () => {
     })
   })
 
+  describe('toJson back [] or Tree is null', () => {
+    test('Searialize tree to json', () => {
+      let tree = new Tree()
+      const json = tree.toJson()
+      expect(typeof json).toEqual('object')
+    })
+  })
+
   describe('Options', () => {
     test('Flags: key_id and key_parent', () => {
       const object = { uid: 1, title: 'Root' }
