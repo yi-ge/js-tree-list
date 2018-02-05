@@ -71,3 +71,40 @@ describe('UUID List to Tree:', () => {
   //   expect('child' in node).toBe(true)
   // })
 })
+
+describe('ID is Equal:', () => {
+  let list = []
+
+  let key_id = 'id'
+  let key_parent = 'parent'
+  let key_child = 'children'
+
+  beforeEach(() => {
+    list = [
+      {
+        id: 1,
+        parent: 0
+      },
+      {
+        id: 2,
+        parent: 1
+      },
+      {
+        id: 2,
+        parent: 1
+      }
+    ]
+  })
+
+  test('Sort tree', () => {
+    let ltt = new LTT(list, {
+      key_id,
+      key_parent,
+      key_child
+    })
+    ltt.sort(compareById(false))
+    const json = ltt.GetTree()
+    showTree(json)
+    expect(typeof json).toBe('object')
+  })
+})

@@ -192,6 +192,17 @@ describe('Tree', () => {
         }
       })
     })
+
+    test('typeof criteria is function', () => {
+      tree = generateTreeDefault()
+      tree.traversal(null, currentNode => {
+        if (currentNode.get('id') % 2 === 0) {
+          currentNode.set('some', true)
+        }
+      })
+
+      tree.traversal(tree)
+    })
   })
 
   describe('Sort', () => {

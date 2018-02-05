@@ -569,3 +569,35 @@ describe('No parent:', () => {
     expect(tree.length).toBe(2)
   })
 })
+
+describe('Parent not equal id:', () => {
+  let tree = null
+  let key_id = 'id'
+  let key_parent = 'parent'
+
+  beforeEach(() => {
+    let list = [
+      {
+        id: 4,
+        parent: 0
+      },
+      {
+        id: 2,
+        parent: 3
+      },
+      {
+        id: 3,
+        parent: 5
+      }
+    ]
+    let ltt = new LTT(list, {
+      key_id: key_id,
+      key_parent: key_parent
+    })
+    tree = ltt.GetTree()
+  })
+
+  test('It is workly', () => {
+    expect(tree.length).toBe(1)
+  })
+})
