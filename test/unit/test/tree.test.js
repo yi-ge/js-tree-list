@@ -1,6 +1,6 @@
 import Node from '../../../src/node'
 import Tree from '../../../src/tree'
-import { showTree, compareById } from '../../../src/utils'
+import { showTree, compareById, traversalTree } from '../../../src/utils'
 import generateTreeDefault from './generate-tree-default'
 
 let object = { id: 1, title: 'Root' }
@@ -192,6 +192,21 @@ describe('Tree', () => {
         }
       })
     })
+
+    test('typeof criteria is function', () => {
+      tree = new Tree({})
+
+      traversalTree(
+        tree,
+        null,
+        currentNode => {
+          return true
+        },
+        currentNode => {
+          expect(typeof currentNode).toEqual('object')
+        }
+      )
+    })
   })
 
   describe('Sort', () => {
@@ -280,6 +295,14 @@ describe('Tree', () => {
           undefined
         )
       })
+    })
+  })
+
+  describe('toJson back [] or Tree is null', () => {
+    test('Searialize tree to json', () => {
+      let tree = new Tree()
+      const json = tree.toJson()
+      expect(typeof json).toEqual('object')
     })
   })
 

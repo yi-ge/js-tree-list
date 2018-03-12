@@ -111,6 +111,9 @@ export let traversalTree = (tree, node = null, criteria, callback) => {
 export let serializeTree = (tree, node = null, target = [], options) => {
   const { key_children } = options
   node = node || tree.rootNode
+  if (!node) {
+    return null
+  }
   const index = target.push(Object.assign({ [key_children]: [] }, node.content))
   node.children.forEach(item => {
     serializeTree(tree, item, target[index - 1][key_children], options)
