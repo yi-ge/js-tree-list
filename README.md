@@ -18,6 +18,12 @@
 
 Convert list to tree, managing a tree and its nodes.
 
+Fork from:
+https://github.com/DenQ/iron-tree
+https://github.com/DenQ/list-to-tree
+
+The author of this project is [DenQ](https://github.com/DenQ).
+
 ## Features
 
 * Convert list to tree.
