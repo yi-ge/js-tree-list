@@ -22,12 +22,13 @@ Fork from:
 https://github.com/DenQ/iron-tree
 https://github.com/DenQ/list-to-tree
 
-The author of this project is [DenQ](https://github.com/DenQ).
+The author of this project is [DenQ](https://github.com/DenQ). This project has only been improved a little.
 
 ## Features
 
 * Convert list to tree.
 * Convert tree to list.
+* Tree sort by last.
 
 ## Installation
 
@@ -84,7 +85,9 @@ var list = [
 
 var listToTree = new JsTreeList.ListToTree(list, {
   key_id: "id",
-  key_parent: "parent"
+  key_parent: "parent",
+  key_child: "children",
+  key_last: "last" // all is option
 })
 var tree = listToTree.GetTree()
 
