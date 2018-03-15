@@ -343,6 +343,7 @@ var defaultOptions = {
   key_parent: 'parent',
   key_child: 'child',
   key_last: null,
+  uuid: false,
   empty_children: false
 };
 
@@ -375,10 +376,14 @@ var ListToTree = function () {
     this.options = options;
     var _options = options,
         key_id = _options.key_id,
-        key_parent = _options.key_parent;
+        key_parent = _options.key_parent,
+        uuid = _options.uuid;
 
 
-    sortBy(_list, key_parent, key_id);
+    if (uuid === false) {
+      sortBy(_list, key_parent, key_id);
+    }
+
     var tree = new Tree(defineProperty({}, key_id, 0));
     _list.forEach(function (item, index) {
       tree.add(function (parentNode) {
@@ -398,8 +403,12 @@ var ListToTree = function () {
     key: 'last',
     value: function last(val, key_id, key_last, key_child) {
       for (var n in val) {
+        if (val[n][key_child] && val[n][key_child].length) {
+          // 如果有子元素，则先对子元素进行处理
+          this.last(val[n][key_child], key_id, key_last, key_child);
+        }
         if (val[n][key_last] !== 0) {
-          if (val[n - 1][key_id] !== val[n][key_last]) {
+          if (n - 1 >= 0 && val[n - 1][key_id] !== val[n][key_last] || n - 1 < 0) {
             var findID = val[n][key_last];
             var tmp = val.splice(n, 1); // 从该元素位置删除元素并将已删除的元素放置于新数组(tmp)
             for (var i in val) {
@@ -408,9 +417,6 @@ var ListToTree = function () {
               }
             }
           }
-        }
-        if (val[n][key_child]) {
-          this.last(val[n], key_id, key_last, key_child);
         }
       }
     }
