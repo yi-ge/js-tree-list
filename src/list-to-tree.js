@@ -49,7 +49,7 @@ export default class ListToTree {
     this.tree.sort(criteria)
   }
 
-  last (val, key_last) {
+  last (val, key_id, key_last, key_child) {
     for (let n in val) {
       if (val[n][key_last] !== 0) {
         if (val[n - 1][key_id] !== val[n][key_last]) {
@@ -62,11 +62,14 @@ export default class ListToTree {
           }
         }
       }
+      if (val[n][key_child]) {
+        this.last(val[n], key_id, key_last, key_child)
+      }
     }
   }
 
   GetTree () {
-    const { key_child, empty_children, key_last } = this.options
+    const { key_id, key_child, empty_children, key_last } = this.options
 
     let json = this.tree.toJson({
       key_children: key_child,
@@ -74,7 +77,7 @@ export default class ListToTree {
     })[key_child]
 
     if (key_last) {
-      this.last(json, key_last)
+      this.last(json, key_id, key_last, key_child)
     }
     return json
   }
