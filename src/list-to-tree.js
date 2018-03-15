@@ -4,6 +4,8 @@ const defaultOptions = {
   key_id: 'id',
   key_parent: 'parent',
   key_child: 'child',
+  key_last: null,
+  uuid: false,
   empty_children: false
 }
 
@@ -24,14 +26,17 @@ function sortBy (collection, propertyA, propertyB) {
 }
 
 export default class ListToTree {
-  constructor (list, options = {}) {
+  constructor(list, options = {}) {
     const _list = list.map(item => item)
 
     options = Object.assign({}, defaultOptions, options)
     this.options = options
-    const { key_id, key_parent } = options
+    const { key_id, key_parent, uuid } = options
 
-    sortBy(_list, key_parent, key_id)
+    if (uuid === false) {
+      sortBy(_list, key_parent, key_id)
+    }
+
     const tree = new LTT({
       [key_id]: 0
     })
@@ -48,11 +53,36 @@ export default class ListToTree {
     this.tree.sort(criteria)
   }
 
+  last (val, key_id, key_last, key_child) {
+    for (let n in val) {
+      if (val[n][key_child] && val[n][key_child].length) { // 如果有子元素，则先对子元素进行处理
+        this.last(val[n][key_child], key_id, key_last, key_child)
+      }
+      if (val[n][key_last] !== 0) {
+        if (((n - 1) >= 0 && val[n - 1][key_id] !== val[n][key_last]) || (n - 1) < 0) {
+          const findID = val[n][key_last]
+          const tmp = val.splice(n, 1) // 从该元素位置删除元素并将已删除的元素放置于新数组(tmp)
+          for (let i in val) {
+            if (val[i][key_id] === findID) {
+              val.splice(i + 1, 0, tmp[0]) // 在指定ID元素后面添加被删除的元素
+            }
+          }
+        }
+      }
+    }
+  }
+
   GetTree () {
-    const { key_child, empty_children } = this.options
-    return this.tree.toJson({
+    const { key_id, key_child, empty_children, key_last } = this.options
+
+    let json = this.tree.toJson({
       key_children: key_child,
       empty_children: false
     })[key_child]
+
+    if (key_last) {
+      this.last(json, key_id, key_last, key_child)
+    }
+    return json
   }
 }

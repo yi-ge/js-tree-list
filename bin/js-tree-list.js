@@ -223,6 +223,9 @@ var serializeTree = function serializeTree(tree) {
   var key_children = options.key_children;
 
   node = node || tree.rootNode;
+  if (!node) {
+    return null;
+  }
   var index = target.push(Object.assign(defineProperty({}, key_children, []), node.content));
   node.children.forEach(function (item) {
     serializeTree(tree, item, target[index - 1][key_children], options);
@@ -327,6 +330,8 @@ var Tree = function () {
 
       if (result && result.length > 0) {
         return result[0];
+      } else {
+        return [];
       }
     }
   }]);
@@ -337,6 +342,8 @@ var defaultOptions = {
   key_id: 'id',
   key_parent: 'parent',
   key_child: 'child',
+  key_last: null,
+  uuid: false,
   empty_children: false
 };
 
@@ -369,10 +376,14 @@ var ListToTree = function () {
     this.options = options;
     var _options = options,
         key_id = _options.key_id,
-        key_parent = _options.key_parent;
+        key_parent = _options.key_parent,
+        uuid = _options.uuid;
 
 
-    sortBy(_list, key_parent, key_id);
+    if (uuid === false) {
+      sortBy(_list, key_parent, key_id);
+    }
+
     var tree = new Tree(defineProperty({}, key_id, 0));
     _list.forEach(function (item, index) {
       tree.add(function (parentNode) {
@@ -389,16 +400,45 @@ var ListToTree = function () {
       this.tree.sort(criteria);
     }
   }, {
+    key: 'last',
+    value: function last(val, key_id, key_last, key_child) {
+      for (var n in val) {
+        if (val[n][key_child] && val[n][key_child].length) {
+          // 如果有子元素，则先对子元素进行处理
+          this.last(val[n][key_child], key_id, key_last, key_child);
+        }
+        if (val[n][key_last] !== 0) {
+          if (n - 1 >= 0 && val[n - 1][key_id] !== val[n][key_last] || n - 1 < 0) {
+            var findID = val[n][key_last];
+            var tmp = val.splice(n, 1); // 从该元素位置删除元素并将已删除的元素放置于新数组(tmp)
+            for (var i in val) {
+              if (val[i][key_id] === findID) {
+                val.splice(i + 1, 0, tmp[0]); // 在指定ID元素后面添加被删除的元素
+              }
+            }
+          }
+        }
+      }
+    }
+  }, {
     key: 'GetTree',
     value: function GetTree() {
       var _options2 = this.options,
+          key_id = _options2.key_id,
           key_child = _options2.key_child,
-          empty_children = _options2.empty_children;
+          empty_children = _options2.empty_children,
+          key_last = _options2.key_last;
 
-      return this.tree.toJson({
+
+      var json = this.tree.toJson({
         key_children: key_child,
         empty_children: false
       })[key_child];
+
+      if (key_last) {
+        this.last(json, key_id, key_last, key_child);
+      }
+      return json;
     }
   }]);
   return ListToTree;
