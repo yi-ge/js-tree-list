@@ -29,6 +29,7 @@ The author of this project is [DenQ](https://github.com/DenQ). This project has 
 * Convert list to tree.
 * Convert tree to list.
 * Tree sort by last.
+* UUID is support.
 
 ## Installation
 
@@ -37,6 +38,18 @@ $ npm install js-tree-list
 ```
 
 ## Usage
+
+```js
+// JsTreeList.ListToTree Config
+const defaultOptions = {
+  key_id: 'id',
+  key_parent: 'parent',
+  key_child: 'child',
+  key_last: null,
+  uuid: false,
+  empty_children: false
+}
+```
 
 ```js
 import JsTreeList from "js-tree-list"
