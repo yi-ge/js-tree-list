@@ -396,7 +396,7 @@ var ListToTree = function () {
     }
   }, {
     key: 'last',
-    value: function last(val, key_last) {
+    value: function last(val, key_id, key_last, key_child) {
       for (var n in val) {
         if (val[n][key_last] !== 0) {
           if (val[n - 1][key_id] !== val[n][key_last]) {
@@ -409,12 +409,16 @@ var ListToTree = function () {
             }
           }
         }
+        if (val[n][key_child]) {
+          this.last(val[n], key_id, key_last, key_child);
+        }
       }
     }
   }, {
     key: 'GetTree',
     value: function GetTree() {
       var _options2 = this.options,
+          key_id = _options2.key_id,
           key_child = _options2.key_child,
           empty_children = _options2.empty_children,
           key_last = _options2.key_last;
@@ -426,7 +430,7 @@ var ListToTree = function () {
       })[key_child];
 
       if (key_last) {
-        this.last(json, key_last);
+        this.last(json, key_id, key_last, key_child);
       }
       return json;
     }
