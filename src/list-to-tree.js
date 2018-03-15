@@ -60,7 +60,6 @@ export default class ListToTree {
       }
       if (val[n][key_last] !== 0) {
         if (((n - 1) >= 0 && val[n - 1][key_id] !== val[n][key_last]) || (n - 1) < 0) {
-          const findID = val[n][key_last]
           const tmp = val.splice(n, 1) // 从该元素位置删除元素并将已删除的元素放置于新数组(tmp)
           val.splice(n + 1, 0, tmp[0]) // 在指定ID元素后面添加被删除的元素
         }
