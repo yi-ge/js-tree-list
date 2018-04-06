@@ -96,15 +96,20 @@ var list = [
   }
 ]
 
-var listToTree = new JsTreeList.ListToTree(list, {
+const tree = new JsTreeList.ListToTree(list, {
   key_id: "id",
   key_parent: "parent",
   key_child: "children",
-  key_last: "last" // all is option
-})
-var tree = listToTree.GetTree()
+  key_last: "last"
+}).GetTree()
+
+const list = new JsTreeList.TreeToList(tree, {
+  key_child: "children",
+  empty_children: true
+}).GetList()
 
 console.log(tree)
+console.log(list)
 ```
 
 ###### Result
