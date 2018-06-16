@@ -28,7 +28,7 @@ The author of this project is [DenQ](https://github.com/DenQ). This project has 
 
 * Convert list to tree.
 * Convert tree to list.
-* Tree sort by last.
+* Tree sort by `last`.
 * UUID is support.
 
 ## Installation
