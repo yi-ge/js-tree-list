@@ -42,7 +42,7 @@ export default class ListToTree {
     })
     _list.forEach((item, index) => {
       tree.add(parentNode => {
-        return parentNode.get(key_id) === item[key_parent]
+        return parentNode.get(key_id) === item[key_parent] || item[key_parent] === null
       }, item)
     })
 
