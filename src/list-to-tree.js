@@ -72,7 +72,7 @@ export default class ListToTree {
 
     let json = this.tree.toJson({
       key_children: key_child,
-      empty_children: false
+      empty_children: empty_children
     })[key_child]
 
     if (key_last) {
