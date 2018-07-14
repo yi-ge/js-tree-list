@@ -387,7 +387,7 @@ var ListToTree = function () {
     var tree = new Tree(defineProperty({}, key_id, 0));
     _list.forEach(function (item, index) {
       tree.add(function (parentNode) {
-        return parentNode.get(key_id) === item[key_parent];
+        return parentNode.get(key_id) === item[key_parent] || item[key_parent] === null;
       }, item);
     });
 
@@ -427,7 +427,7 @@ var ListToTree = function () {
 
       var json = this.tree.toJson({
         key_children: key_child,
-        empty_children: false
+        empty_children: empty_children
       })[key_child];
 
       if (key_last) {

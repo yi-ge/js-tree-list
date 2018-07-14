@@ -175,9 +175,8 @@ describe('UUID List to Tree:', () => {
   })
 
   test('It is workly', () => {
-    console.log(tree)
-    console.log(tree[1]['children'])
-
+    // console.log(tree)
+    // console.log(tree[1]['children'])
     expect(tree.length).toBe(3)
     expect(tree[1]['children'].length).toBe(4)
   })
@@ -188,5 +187,80 @@ describe('UUID List to Tree:', () => {
     expect(tree[1]['children'][0]['id']).toBe('cb33614c-58d8-4d7d-930d-40bfff15de26')
     expect(tree[1]['children'][1]['id']).toBe('d9702c3b-405d-4cc6-ad61-b7bca1efd710')
     expect(tree[1]['children'][2]['id']).toBe('3a501280-9a23-454e-a022-6131c6b9af9b')
+  })
+})
+
+describe('UUID List to Tree，parent is null:', () => {
+  let tree = null
+
+  beforeEach(() => {
+    let list = [
+      {
+        id: 'ca6c9883-005a-4ee5-a84d-34bb19a7818b',
+        parent: null
+      },
+      {
+        id: 'cb33614c-58d8-4d7d-930d-40bfff15de26',
+        parent: 'ca6c9883-005a-4ee5-a84d-34bb19a7818b'
+      },
+      {
+        id: 'd9702c3b-405d-4cc6-ad61-b7bca1efd710',
+        parent: 'cb33614c-58d8-4d7d-930d-40bfff15de26'
+      }
+    ]
+
+    // console.log(list)
+
+    let ltt = new LTT(list, {
+      key_id: 'id',
+      key_parent: 'parent',
+      key_child: 'children',
+      uuid: true
+    })
+    tree = ltt.GetTree()
+  })
+
+  test('It is workly', () => {
+    expect(tree.length).toBe(1)
+  })
+})
+
+describe('UUID List to empty_children is true:', () => {
+  let tree = null
+
+  beforeEach(() => {
+    let list = [
+      {
+        id: 'ca6c9883-005a-4ee5-a84d-34bb19a7818b',
+        parent: null,
+        children: []
+      },
+      {
+        id: 'cb33614c-58d8-4d7d-930d-40bfff15de26',
+        parent: 'ca6c9883-005a-4ee5-a84d-34bb19a7818b',
+        children: []
+      },
+      {
+        id: 'd9702c3b-405d-4cc6-ad61-b7bca1efd710',
+        parent: 'cb33614c-58d8-4d7d-930d-40bfff15de26',
+        children: []
+      }
+    ]
+
+    // console.log(list)
+
+    let ltt = new LTT(list, {
+      key_id: 'id',
+      key_parent: 'parent',
+      key_child: 'children',
+      empty_children: true,
+      uuid: true
+    })
+    tree = ltt.GetTree()
+  })
+
+  test('It is workly', () => {
+    console.log(tree[0].children[0].children[0].children.length)
+    expect(tree.length).toBe(1)
   })
 })
