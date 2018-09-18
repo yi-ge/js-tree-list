@@ -24,6 +24,100 @@ https://github.com/DenQ/list-to-tree
 
 The author of this project is [DenQ](https://github.com/DenQ). This project has only been improved a little.
 
+**There is a known bug that may be reported incorrectly when the list order is incorrect. The temporary alternative is as follows:**
+
+```js
+// 获取描述对象的值
+export const getObjectValue = (obj, des) => {
+  return eval('obj.' + des) // eslint-disable-line
+}
+
+/**
+ * 将json按一定规律组合成父子模式
+ * @param  {[type]} data                        json数据
+ * @param  {Number} [minPid=0]                  最大的父ID（可能不是0，最大的是几就填几，就从几开始排）
+ * @param  {String} [IDString='ID']             ID的别名
+ * @param  {String} [pidString='pid']           父ID的别名
+ * @param  {String} [childrenString='children'] 生成的子的别名（子的数据就在这个名称下）
+ * @return {[type]}                             父子JSON
+ */
+export const toTreeData = (
+  data,
+  minPid = 0,
+  IDString = 'ID',
+  pidString = 'pid',
+  childrenString = 'children',
+  sort = 'sort'
+) => {
+  let pos = {}
+  let tree = []
+  let n = 0
+
+  if (minPid === 'null') {
+    minPid = null
+  }
+
+  while (data.length !== 0) {
+    if (getObjectValue(data[n], pidString) == minPid) { // eslint-disable-line
+      // delete getObjectValue(data[n], pidString)
+      data[n][childrenString] = []
+      tree.push(data[n])
+      pos[getObjectValue(data[n], IDString)] = [tree.length - 1]
+      data.splice(n, 1)
+      n--
+    } else {
+      let posArray = pos[getObjectValue(data[n], pidString)]
+      if (posArray !== undefined) {
+        let obj = tree[posArray[0]]
+        for (let j = 1; j < posArray.length; j++) {
+          obj = obj[childrenString][posArray[j]]
+        }
+        // delete getObjectValue(data[n], pidString)
+        data[n][childrenString] = []
+        obj[childrenString].push(data[n])
+        pos[getObjectValue(data[n], IDString)] = posArray.concat([
+          obj[childrenString].length - 1
+        ])
+        data.splice(n, 1)
+        n--
+      }
+    }
+    n++
+    if (n > data.length - 1) {
+      n = 0
+    }
+  }
+
+  // sort
+  const toSort = (tree) => {
+    tree.sort((a, b) => {
+      return a[sort] - b[sort]
+    })
+  }
+
+  const ergodicTree = (tree) => {
+    for (const n in tree) {
+      if (tree[n][childrenString] && tree[n][childrenString].length) {
+        toSort(tree[n][childrenString])
+        ergodicTree(tree[n][childrenString])
+      }
+    }
+  }
+
+  toSort(tree)
+  ergodicTree(tree)
+
+  return tree
+}
+```
+
+**You can use it**
+```js
+console.time('tree算法')
+const girdData = toTreeData(tmp, 'null', 'dataUuid', 'parentUuid', '_children')
+console.timeEnd('tree算法')
+```
+
 ## Features
 
 * Convert list to tree.
